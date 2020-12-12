@@ -16,7 +16,7 @@ fun main(args: Array<String>) = WorkbookFactory
     .create(FileInputStream(args[0]))
     .getSheetAt(0)
     .drop(1)
-    .groupBy({ "${it.getCell(0)}".noWhitespace }) { r -> r.drop(1).take(5).map { "$it" } }
+    .groupBy({ "${it.first()}".noWhitespace }) { r -> r.drop(1).take(5).map { "$it" } }
     .mapValues { (_,v) -> v.associate { it[0].noWhitespace to Card(it[1], it[2].noWhitespace, it[3].toBoolean(), it.getOrElse(4) { "" }) } }
     .let(::Config)
     .let(Yaml()::encodeToString)
