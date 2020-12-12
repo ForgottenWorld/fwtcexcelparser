@@ -9,7 +9,7 @@ import java.io.File
 import java.io.FileInputStream
 
 @Serializable data class Config(val Cards: Map<String, Map<String, Card>>)
-@Serializable data class Card(val Series: String, val Type: String, @SerialName("Has-Shiny-Version") val HasShiny: Boolean, val Info: String)
+@Serializable data class Card(val Series: String, val Type: String, val `Has-Shiny-Version`: Boolean, val Info: String)
 val String.noWhitespace get() = replace(" ", "_")
 
 fun main(args: Array<String>) = WorkbookFactory
